@@ -60,6 +60,12 @@ namespace QA_Feedback.Controllers
             return View();
         }
 
+        public IActionResult GoTo()
+        {
+            return View();
+        }
+
+
         // POST: Questions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -180,6 +186,13 @@ namespace QA_Feedback.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Jump(string Source)
+        {
+            return Redirect($"/Questions/ask/{Source}");
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> Ask(int id)
         {
             var x = _context.Question.Where<Question>(q => q.Source == id).ToList();
@@ -243,7 +256,7 @@ namespace QA_Feedback.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-                return View("~/Views/Home/Landing.cshtml");
+                //return View("~/Views/Home/Landing.cshtml");
             }
 
             return View();

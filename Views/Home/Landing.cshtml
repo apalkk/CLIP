@@ -464,9 +464,9 @@
     <div class="logo-container"><h2 style="font-family:monospace"><a href="https://wiki.umiacs.umd.edu/clip/index.php/Main_Page">CLIP</a></h2></div>
     <nav class="nav-bar">
         <ul>
-            <li><a href="http://users.umiacs.umd.edu/~jbg/">Proffesor Graber</a></li>
-            <li><a href="/Questions/ask/1">Jump To Source</a></li>
-            <li><a href="#">Sign In</a></li>
+            <li><a href="http://users.umiacs.umd.edu/~jbg/">Professor Graber</a></li>
+            <li><a href="/Questions/GoTo">Jump To Source</a></li>
+            <li><a href="#middle">Sign In</a></li>
         </ul>
     </nav>
 
@@ -477,7 +477,7 @@
     <section class="intro">
         <div class="intro-img"> <img src="https://hannahshiels.github.io/front-end-mentor/fylo-dark-theme-landing-page-master/images/illustration-intro.png" alt="illustration-intro"></div>
         <div class="intro-content">
-            <h1> A portal to provide feedback to Jordan Boyd Graber's Feet Thinking Research Group.</h1>
+            <h1>QuizBowl Question Generation Portal</h1>
 
             <p class="lg-p mt-2">
                  Please read the instructions below before starting.
@@ -522,21 +522,16 @@
             </div>
         </div>
     </section>
-    <section>
-        <p>Login</p>
+    <section style="text-align: center;" id='middle'>
         @using (Html.BeginForm("PrivateLogin", "Home", FormMethod.Post))
         {
             <div>
                 @Html.Label("Password:")
                 @Html.Password("password")
             </div>
-            <tr>
-                <td><input type="submit" value="Enter" /></td>
-            </tr>
-
+            <hr />
+                <input type="submit" value="Login &nbsp"/>
         }
-        <p>Close Vault</p>
-
     </section>
 
     <footer>

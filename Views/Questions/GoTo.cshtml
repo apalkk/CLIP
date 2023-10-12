@@ -1,0 +1,14 @@
+﻿@page
+@{
+}
+
+@using (Html.BeginForm("Jump", "Questions", FormMethod.Get))
+{
+    <div>
+        @Html.Label("Source-Number:")
+        @Html.TextBox("Source", null, new { type = "number" })
+    </div>
+    <hr />
+    <input type="submit" value="Jump &nbsp" />
+}
+
