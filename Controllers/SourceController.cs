@@ -21,7 +21,12 @@ namespace QA_Feedback.Controllers
         // GET: Source
         public async Task<IActionResult> Index()
         {
-              return _context.Source != null ? 
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
+            return _context.Source != null ? 
                           View(await _context.Source.ToListAsync()) :
                           Problem("Entity set 'QuizContext.Source'  is null.");
         }
@@ -29,6 +34,11 @@ namespace QA_Feedback.Controllers
         // GET: Source/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
             if (id == null || _context.Source == null)
             {
                 return NotFound();
@@ -47,6 +57,11 @@ namespace QA_Feedback.Controllers
         // GET: Source/Create
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
             return View();
         }
 
@@ -89,6 +104,7 @@ namespace QA_Feedback.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Stars,Question")] Source source)
         {
+
             if (id != source.Id)
             {
                 return NotFound();
@@ -120,6 +136,11 @@ namespace QA_Feedback.Controllers
         // GET: Source/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
             if (id == null || _context.Source == null)
             {
                 return NotFound();

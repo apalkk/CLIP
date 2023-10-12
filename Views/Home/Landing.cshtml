@@ -522,6 +522,23 @@
             </div>
         </div>
     </section>
+    <section>
+        <p>Login</p>
+        @using (Html.BeginForm("PrivateLogin", "Home", FormMethod.Post))
+        {
+            <div>
+                @Html.Label("Password:")
+                @Html.Password("password")
+            </div>
+            <tr>
+                <td><input type="submit" value="Enter" /></td>
+            </tr>
+
+        }
+        <p>Close Vault</p>
+
+    </section>
+
     <footer>
         <h3 class="attribution">
             Notice any issues? Contact me <a href="https://aadipalnitkar.info">here</a>.

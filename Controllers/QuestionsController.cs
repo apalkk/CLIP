@@ -21,7 +21,12 @@ namespace QA_Feedback.Controllers
         // GET: Questions
         public async Task<IActionResult> Index()
         {
-              return _context.Question != null ? 
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
+                return _context.Question != null ? 
                           View(await _context.Question.ToListAsync()) :
                           Problem("Entity set 'QuizContext.Question'  is null.");
         }
@@ -29,6 +34,11 @@ namespace QA_Feedback.Controllers
         // GET: Questions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
             if (id == null || _context.Question == null)
             {
                 return NotFound();
@@ -69,6 +79,11 @@ namespace QA_Feedback.Controllers
         // GET: Questions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
             if (id == null || _context.Question == null)
             {
                 return NotFound();
@@ -120,6 +135,11 @@ namespace QA_Feedback.Controllers
         // GET: Questions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
             if (id == null || _context.Question == null)
             {
                 return NotFound();
