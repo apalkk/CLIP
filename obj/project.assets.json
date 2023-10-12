@@ -11534,24 +11534,26 @@
     ]
   },
   "packageFolders": {
-    "/root/.nuget/packages/": {}
+    "/Users/aadipalnitkar/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/CLIP/QA-Feedback.csproj",
+      "projectUniqueName": "/Users/aadipalnitkar/CLIP/QA-Feedback.csproj",
       "projectName": "QA-Feedback",
-      "projectPath": "/home/CLIP/QA-Feedback.csproj",
-      "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/home/CLIP/obj/",
+      "projectPath": "/Users/aadipalnitkar/CLIP/QA-Feedback.csproj",
+      "packagesPath": "/Users/aadipalnitkar/.nuget/packages/",
+      "outputPath": "/Users/aadipalnitkar/CLIP/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/root/.nuget/NuGet/NuGet.Config"
+        "/Users/aadipalnitkar/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
+        "/usr/local/share/dotnet/sdk/7.0.308/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11614,7 +11616,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.110/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.308/RuntimeIdentifierGraph.json"
       }
     }
   }

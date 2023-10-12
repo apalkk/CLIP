@@ -265,6 +265,16 @@ namespace QA_Feedback.Controllers
         [HttpPost]
         public async Task<IActionResult> Set(int id1, int id2, int id3, int Pyramidality_Stars1, int Pyramidality_Stars2, int Pyramidality_Stars3, int Difficulty_Stars1, int Difficulty_Stars2, int Difficulty_Stars3, int Accuracy_Stars1, int Accuracy_Stars2, int Accuracy_Stars3, string d1, string d2, string d3, int next)
         {
+            if(d1 == null){
+                d1 = "";
+            }
+            if(d2 == null){
+                d2 = "";
+            }
+            if(d3 == null){
+                d3 = "";
+            }
+
             var x = _context.Question.Where(s => s.Id == id1).First();
             var y = _context.Question.Where(s => s.Id == id2).First();
             var z = _context.Question.Where(s => s.Id == id3).First();

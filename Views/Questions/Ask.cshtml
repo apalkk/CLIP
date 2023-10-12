@@ -2,12 +2,13 @@
         For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
     *@
     @{
+    ViewData["header"] = true;
     }
+
     <script>$(':radio').change(function () {
             console.log('New star rating: ' + this.value);
         });</script>
     <style>
-
         .rating {
             display: block;
             position: relative;
