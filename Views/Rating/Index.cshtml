@@ -34,7 +34,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Question)
+                <a href="Questions/Details/@item.Question">@Html.DisplayFor(modelItem => item.Question)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
