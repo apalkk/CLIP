@@ -267,7 +267,7 @@ namespace QA_Feedback.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-                //return View("~/Views/Home/Landing.cshtml");
+                return View("~/Views/Home/Incorrect.cshtml");
             }
 
             return View();
