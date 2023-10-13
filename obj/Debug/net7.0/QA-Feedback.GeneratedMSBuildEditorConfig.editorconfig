@@ -9,113 +9,113 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QA_Feedback
 build_property.RootNamespace = QA_Feedback
-build_property.ProjectDir = /Users/aadipalnitkar/CLIP/
+build_property.ProjectDir = /Users/aadipalnitkar/Projects/CLIP/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/aadipalnitkar/CLIP
+build_property.MSBuildProjectDirectory = /Users/aadipalnitkar/Projects/CLIP
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/aadipalnitkar/CLIP/Views/Home/Go.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Home/Go.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Hby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Home/Index.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Home/Landing.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Home/Landing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9MYW5kaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Home/Privacy.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Questions/Ask.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Questions/Ask.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVlc3Rpb25zL0Fzay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Questions/Create.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Questions/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVlc3Rpb25zL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Questions/Delete.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Questions/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVlc3Rpb25zL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Questions/Details.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Questions/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVlc3Rpb25zL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Questions/Edit.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Questions/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVlc3Rpb25zL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Questions/GoTo.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Questions/GoTo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVlc3Rpb25zL0dvVG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Questions/Index.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Questions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUXVlc3Rpb25zL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Rating/Create.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Rating/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmF0aW5nL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Rating/Delete.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Rating/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmF0aW5nL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Rating/Details.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Rating/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmF0aW5nL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Rating/Edit.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Rating/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmF0aW5nL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Rating/Index.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Rating/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmF0aW5nL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Shared/Error.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Source/Create.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Source/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291cmNlL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Source/Delete.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Source/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291cmNlL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Source/Details.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Source/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291cmNlL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Source/Edit.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Source/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291cmNlL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Source/Index.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Source/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291cmNlL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/_ViewImports.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/_ViewStart.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aadipalnitkar/CLIP/Views/Shared/_Layout.cshtml]
+[/Users/aadipalnitkar/Projects/CLIP/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-g8cgv85yng
