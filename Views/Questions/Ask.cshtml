@@ -89,368 +89,369 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-    <main>
-        <a href="~/"><i class="fa fa-home fa-4x"></i></a>
-        <div class="grid-container">
+<main>
+    <a href="~/"><i class="fa fa-home fa-3x"></i></a>
+    <h1 style="text-align:center">@ViewData["title"]</h1>
+    <div class="grid-container">
 
-            <div class="grid-item">
-                @ViewData["1"]
-            </div>
-            <div class="grid-item">
-                @ViewData["2"]
-            </div>
-            <div class="grid-item">
-                @ViewData["3"]
-            </div>
+        <div class="grid-item">
+            @ViewData["1"]
         </div>
-        <form method="post" action="/Questions/Set/">
-            <input hidden name="id1" id="id1" value="@ViewData["1i"]">
-            <input hidden name="id2" id="id2" value="@ViewData["2i"]">
-            <input hidden name="id3" id="id3" value="@ViewData["3i"]">
-            <input hidden name="next" id="next" value="@ViewData["next"]">
+        <div class="grid-item">
+            @ViewData["2"]
+        </div>
+        <div class="grid-item">
+            @ViewData["3"]
+        </div>
+    </div>
+    <form method="post" action="/Questions/Set/">
+        <input hidden name="id1" id="id1" value="@ViewData["1i"]">
+        <input hidden name="id2" id="id2" value="@ViewData["2i"]">
+        <input hidden name="id3" id="id3" value="@ViewData["3i"]">
+        <input hidden name="next" id="next" value="@ViewData["next"]">
 
 
-            <div class="grid-container" style="justify-content: space-between">
-                <div class="grid-item">
-                    Accuracy
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
+        <div class="grid-container" style="justify-content: space-between">
+            <div class="grid-item">
+                Accuracy
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars1" id="Accuracy_Stars1" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
                 </div>
-                <div class="grid-item">
-                    Accuracy
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="grid-item">
-                    Accuracy
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="grid-item">
-                    Pyramidality
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="grid-item">
-                    Pyramidality
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="grid-item">
-                    Pyramidality
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="grid-item">
-                    Difficulty
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="grid-item">
-                    Difficulty
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="grid-item">
-                    Difficulty
-                    <div class="rating">
-                        <label>
-                            <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
-
-                </div>
-                <div class="grid-item">
-                    <p>Add your comments here:</p>
-                    <textarea name="d1" id="d1" style="height: 250px;"></textarea>
-                </div>
-                <div class="grid-item">
-                    <p>Add your comments here:</p>
-                    <textarea name="d2" id="d2" style="height: 250px;"></textarea>
-                </div>
-                <div class="grid-item">
-                    <p>Add your comments here:</p>
-                    <textarea name="d3" id="d3" style="height: 250px;"></textarea>
-                </div>
-
 
             </div>
-            <div style="position:relative; bottom:10%;">
-                <input style="  background-color: #04AA6D;
+            <div class="grid-item">
+                Accuracy
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars2" id="Accuracy_Stars2" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-item">
+                Accuracy
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Accuracy_Stars3" id="Accuracy_Stars3" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-item">
+                Pyramidality
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars1" id="Pyramidality_Stars1" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-item">
+                Pyramidality
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars2" id="Pyramidality_Stars2" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-item">
+                Pyramidality
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Pyramidality_Stars3" id="Pyramidality_Stars3" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-item">
+                Difficulty
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars1" id="Difficulty_Stars1" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-item">
+                Difficulty
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars2" id="Difficulty_Stars2" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+            </div>
+            <div class="grid-item">
+                Difficulty
+                <div class="rating">
+                    <label>
+                        <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="Difficulty_Stars3" id="Difficulty_Stars3" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-item">
+                <p>Add your comments here:</p>
+                <textarea name="d1" id="d1" style="height: 250px;"></textarea>
+            </div>
+            <div class="grid-item">
+                <p>Add your comments here:</p>
+                <textarea name="d2" id="d2" style="height: 250px;"></textarea>
+            </div>
+            <div class="grid-item">
+                <p>Add your comments here:</p>
+                <textarea name="d3" id="d3" style="height: 250px;"></textarea>
+            </div>
+
+
+        </div>
+        <div style="position:relative; bottom:10%;">
+            <input style="  background-color: #04AA6D;
       border: none;
       color: white;
       padding: 16px 32px;
@@ -459,7 +460,7 @@
       cursor: pointer;
     " type="submit" value="Submit" />
 
-            </div>
+        </div>
 
-        </form>
-    </main>
+    </form>
+</main>

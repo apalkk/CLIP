@@ -196,11 +196,22 @@ namespace QA_Feedback.Controllers
         public async Task<IActionResult> Ask(int id)
         {
             var x = _context.Question.Where<Question>(q => q.Source == id).ToList();
+            try
+            {
+                var src = _context.Source.Where<Source>(q => q.Id == id).ToList().First();
+                ViewData["title"] = src.Title;
+
+            } catch(Exception e)
+            {
+                ViewData["title"] = "Not Found";
+            }
+
 
             Random rnd = new Random();
             int random = rnd.Next(4);
 
             ViewData["source"] = id;
+
 
             try
             {
