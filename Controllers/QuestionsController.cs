@@ -265,14 +265,9 @@ namespace QA_Feedback.Controllers
         [HttpPost]
         public async Task<IActionResult> Set(int id1, int id2, int id3, int Pyramidality_Stars1, int Pyramidality_Stars2, int Pyramidality_Stars3, int Difficulty_Stars1, int Difficulty_Stars2, int Difficulty_Stars3, int Accuracy_Stars1, int Accuracy_Stars2, int Accuracy_Stars3, string d1, string d2, string d3, int next)
         {
-            if(d1 == null){
-                d1 = "";
-            }
-            if(d2 == null){
-                d2 = "";
-            }
-            if(d3 == null){
-                d3 = "";
+            if (d1 == null || d2 == null || d3 == null || Pyramidality_Stars1 == 0 || Pyramidality_Stars2 == 0 || Pyramidality_Stars3 == 0 || Difficulty_Stars1 == 0 || Difficulty_Stars2 == 0 || Difficulty_Stars3 == 0 || Accuracy_Stars1 == 0 || Accuracy_Stars2 == 0 || Accuracy_Stars3 == 0)
+            {
+                return Redirect($"/Questions/ask/{next-1}");
             }
 
             var x = _context.Question.Where(s => s.Id == id1).First();

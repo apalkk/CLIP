@@ -6,7 +6,7 @@ namespace QA_Feedback.Models
         public int Id { set; get; }
         public int Stars { set; get; }
         public int Question { set; get; }
-
-	}
+        public string? Title { set; get; }
+    }
 }
 

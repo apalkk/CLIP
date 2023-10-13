@@ -4,7 +4,7 @@
     @{
     ViewData["header"] = true;
     }
-
+<head>
     <script>$(':radio').change(function () {
             console.log('New star rating: ' + this.value);
         });</script>
@@ -86,8 +86,11 @@
             background-color: transparent;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+</head>
     <main>
+        <a href="~/"><i class="fa fa-home fa-4x"></i></a>
         <div class="grid-container">
 
             <div class="grid-item">
@@ -433,15 +436,15 @@
                 </div>
                 <div class="grid-item">
                     <p>Add your comments here:</p>
-                    <input type="text" name="d1" id="d1" style="height: 250px;">
+                    <textarea name="d1" id="d1" style="height: 250px;"></textarea>
                 </div>
                 <div class="grid-item">
                     <p>Add your comments here:</p>
-                    <input type="text" name="d2" id="d2" style="height: 250px;">
+                    <textarea name="d2" id="d2" style="height: 250px;"></textarea>
                 </div>
                 <div class="grid-item">
                     <p>Add your comments here:</p>
-                    <input type="text" name="d3" id="d3" style="height: 250px;">
+                    <textarea name="d3" id="d3" style="height: 250px;"></textarea>
                 </div>
 
 

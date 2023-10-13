@@ -70,7 +70,7 @@ namespace QA_Feedback.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Stars,Question")] Source source)
+        public async Task<IActionResult> Create([Bind("Id,Stars,Question,Title")] Source source)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace QA_Feedback.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Stars,Question")] Source source)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Stars,Question,Title")] Source source)
         {
 
             if (id != source.Id)
