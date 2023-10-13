@@ -11,6 +11,7 @@ public class HomeController : Controller
     public static string pass = "hello";
     public static bool auth = false;
     public string SessionAuth = "_Auth";
+    public string SessionName = "_Name";
 
 
 
@@ -41,6 +42,15 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    [HttpPost]
+    public ActionResult SetName(string name)
+    {
+        HttpContext.Session.SetString(SessionName, name);
+        Console.WriteLine("s");
+        return View("~/Views/Home/Landing.cshtml");
+    }
+
 
     [HttpPost]
     public ActionResult PrivateLogin(string password)

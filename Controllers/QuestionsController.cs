@@ -290,6 +290,7 @@ namespace QA_Feedback.Controllers
             r.Pyramidality_Stars = Pyramidality_Stars1;
             r.Difficulty_Stars = Difficulty_Stars1;
             r.Accuracy_Stars = Accuracy_Stars1;
+            r.User = HttpContext.Session.GetString("_Name") ?? "";
             _context.Rating.Add(r);
             await _context.SaveChangesAsync();
 
@@ -299,6 +300,7 @@ namespace QA_Feedback.Controllers
             r2.Pyramidality_Stars = Pyramidality_Stars2;
             r2.Difficulty_Stars = Difficulty_Stars2;
             r2.Accuracy_Stars = Accuracy_Stars2;
+            r2.User = HttpContext.Session.GetString("_Name") ?? "";
             _context.Rating.Add(r2);
             await _context.SaveChangesAsync();
 
@@ -308,6 +310,7 @@ namespace QA_Feedback.Controllers
             r3.Pyramidality_Stars = Pyramidality_Stars3;
             r3.Difficulty_Stars = Difficulty_Stars3;
             r3.Accuracy_Stars = Accuracy_Stars3;
+            r3.User = HttpContext.Session.GetString("_Name") ?? "";
             _context.Rating.Add(r3);
             await _context.SaveChangesAsync();
 

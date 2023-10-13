@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.Question)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
@@ -35,6 +38,9 @@
         <tr>
             <td>
                 <a href="Questions/Details/@item.Question">@Html.DisplayFor(modelItem => item.Question)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

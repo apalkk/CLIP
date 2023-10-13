@@ -65,7 +65,7 @@ namespace QA_Feedback.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Question,Description,Difficulty_Stars,Pyramidality_Stars,Accuracy_Stars")] Rating rating)
+        public async Task<IActionResult> Create([Bind("Id,Question,User,Description,Difficulty_Stars,Pyramidality_Stars,Accuracy_Stars")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace QA_Feedback.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Question,Description,Difficulty_Stars,Pyramidality_Stars,Accuracy_Stars")] Rating rating)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Question,User,Description,Difficulty_Stars,Pyramidality_Stars,Accuracy_Stars")] Rating rating)
         {
             if (id != rating.Id)
             {
