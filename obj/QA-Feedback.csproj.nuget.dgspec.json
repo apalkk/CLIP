@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/aadipalnitkar/Projects/CLIP/QA-Feedback.csproj": {}
+    "/Users/aadipalnitkar/CLIP/QA-Feedback.csproj": {}
   },
   "projects": {
-    "/Users/aadipalnitkar/Projects/CLIP/QA-Feedback.csproj": {
+    "/Users/aadipalnitkar/CLIP/QA-Feedback.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aadipalnitkar/Projects/CLIP/QA-Feedback.csproj",
+        "projectUniqueName": "/Users/aadipalnitkar/CLIP/QA-Feedback.csproj",
         "projectName": "QA-Feedback",
-        "projectPath": "/Users/aadipalnitkar/Projects/CLIP/QA-Feedback.csproj",
+        "projectPath": "/Users/aadipalnitkar/CLIP/QA-Feedback.csproj",
         "packagesPath": "/Users/aadipalnitkar/.nuget/packages/",
-        "outputPath": "/Users/aadipalnitkar/Projects/CLIP/obj/",
+        "outputPath": "/Users/aadipalnitkar/CLIP/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/aadipalnitkar/.nuget/NuGet/NuGet.Config"

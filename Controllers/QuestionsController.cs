@@ -1,10 +1,16 @@
+
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.FileIO;
 using QA_Feedback.Models;
 
 namespace QA_Feedback.Controllers
@@ -16,6 +22,86 @@ namespace QA_Feedback.Controllers
         public QuestionsController(QuizContext context)
         {
             _context = context;
+        }
+
+
+            [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
+            var stream = file.OpenReadStream();
+
+            try
+            {
+                using (TextFieldParser reader = new TextFieldParser(stream))
+                {
+                    reader.TextFieldType = FieldType.Delimited;
+                    reader.SetDelimiters(",");
+
+                    int count = 0;
+                    // id,topic,method,question,difficulty,subdifficulty,tournament
+
+                    List<string> id = new();
+                    List<string> topic = new();
+                    List<string> method = new();
+                    List<string> question = new();
+                    List<string> difficulty = new();
+                    List<string> subdifficulty = new();
+                    List<string> tournament = new();
+
+                    reader.ReadLine();
+
+                    while (!reader.EndOfData)
+                    {
+                        string[] values = reader.ReadFields();
+
+                        id.Add(values[0]);
+                        topic.Add(values[1]);
+                        method.Add(values[2]);
+                        question.Add(values[3]);
+                        difficulty.Add(values[4]);
+                        subdifficulty.Add(values[5]);
+                        tournament.Add(values[6]);
+                        count++;
+                    }
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        Source s = new();
+                        Question q = new();
+
+                        s.Question = int.Parse(id[i]);
+                        s.Title = topic[i];
+                        s.Id = s.Question;
+                        if (!_context.Source.Any(s => s.Title == topic[i]))
+                        {
+                            _context.Source.Add(s);
+                        }
+
+                        q.Method = method[i];
+                        q.QuestionText = question[i];
+                        q.Source = int.Parse(id[i]);
+                        _context.Question.Add(q);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+            catch
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
+            return View("~/Views/Home/Landing.cshtml");
+
+        }
+
+        public async Task<IActionResult> UploadFileX()
+        {
+            return View();
         }
 
         // GET: Questions
