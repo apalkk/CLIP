@@ -22,18 +22,6 @@ namespace QA_Feedback.Controllers
         public QuestionsController(QuizContext context)
         {
             _context = context;
-                            foreach(var item in _context.Question){
-                _context.Question.Remove(item);
-            }
-            foreach (var item in _context.Rating)
-            {
-                _context.Rating.Remove(item);
-            }
-            foreach (var item in _context.Source)
-            {
-                _context.Source.Remove(item);
-            }
-
         }
 
 
@@ -113,7 +101,22 @@ namespace QA_Feedback.Controllers
 
         public async Task<IActionResult> UploadFileX()
         {
+            _context.SaveChanges();
             return View();
+        }
+
+        public async void DeleteAll(){
+            foreach(var item in _context.Question){
+                _context.Question.Remove(item);
+            }
+            foreach (var item in _context.Rating)
+            {
+                _context.Rating.Remove(item);
+            }
+            foreach (var item in _context.Source)
+            {
+                _context.Source.Remove(item);
+            }
         }
 
         // GET: Questions
