@@ -338,7 +338,8 @@ namespace QA_Feedback.Controllers
                         ViewData["2i"] = x[1].Id;
                         ViewData["3i"] = x[2].Id;
                         ViewData["id"] = id;
-                        ViewData["next"] = id + 1;
+                        Random r = new Random();
+                        ViewData["next"] = r.NextInt64(_context.Source.Count());
                     }
                     else if (random == 1)
                     {
@@ -349,8 +350,8 @@ namespace QA_Feedback.Controllers
                         ViewData["2i"] = x[0].Id;
                         ViewData["3i"] = x[2].Id;
                         ViewData["id"] = id;
-                        ViewData["next"] = id + 1;
-
+                        Random r = new Random();
+                        ViewData["next"] = r.NextInt64(_context.Source.Count());
                     }
                     else if (random == 1)
                     {
@@ -361,10 +362,9 @@ namespace QA_Feedback.Controllers
                         ViewData["2i"] = x[2].Id;
                         ViewData["3i"] = x[0].Id;
                         ViewData["id"] = id;
-                        ViewData["next"] = id + 1;
-
+                        Random r = new Random();
+                        ViewData["next"] = r.NextInt64(_context.Source.Count());
                     }
-
                     else
                     {
                         ViewData["1"] = x[2].QuestionText;
@@ -374,8 +374,8 @@ namespace QA_Feedback.Controllers
                         ViewData["2i"] = x[0].Id;
                         ViewData["3i"] = x[1].Id;
                         ViewData["id"] = id;
-                        ViewData["next"] = id + 1;
-
+                        Random r = new Random();
+                        ViewData["next"] = r.NextInt64(_context.Source.Count());
                     }
                 }
                 catch (Exception e)
