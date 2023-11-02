@@ -105,8 +105,20 @@ namespace QA_Feedback.Controllers
             return View();
         }
 
-        public async void DeleteAll(){
-            foreach(var item in _context.Question){
+        public async Task<IActionResult> DeleteSuper()
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+            DeleteAll();
+            return View("~/Views/Home/Landing.cshtml");
+        }
+
+        public async void DeleteAll()
+        {
+            foreach (var item in _context.Question)
+            {
                 _context.Question.Remove(item);
             }
             foreach (var item in _context.Rating)
@@ -117,7 +129,6 @@ namespace QA_Feedback.Controllers
             {
                 _context.Source.Remove(item);
             }
-        }
 
         // GET: Questions
         public async Task<IActionResult> Index()
