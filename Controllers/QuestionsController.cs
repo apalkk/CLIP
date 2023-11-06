@@ -367,8 +367,9 @@ namespace QA_Feedback.Controllers
             return Redirect($"/Questions/ask/{Source}");
         }
 
-                [HttpGet]
-        public async Task<IActionResult> Done(){
+        [HttpGet]
+        public async Task<IActionResult> Done()
+        {
             return View();
         }
 
@@ -378,16 +379,27 @@ namespace QA_Feedback.Controllers
         {
             var x = _context.Rating.Where(s => s.User == HttpContext.Session.GetString("_Name")).ToList();
             List<int> question_id = x.Select(s => s.Question).ToList();
-            HashSet<int> source= new();
-            foreach(int i in question_id){
+            HashSet<int> source = new();
+            foreach (int i in question_id)
+            {
                 Question q = _context.Question.Where(s => s.Id == i).First();
                 source.Add(q.Source);
             }
-            if(source.Count() == _context.Source.Count()){
+            if (source.Count() == _context.Source.Count())
+            {
                 return RedirectToAction("Done");
             }
-            int max = (_context.Source.Count() - 1);
-            int rand = GiveMeANumber(max, source);
+            int max = _context.Source.Count();
+            int rand = 0;
+            try
+            {
+                rand = GiveMeANumber(max, source);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Done");
+            }
+
             return Redirect($"/Questions/ask/{rand}");
         }
 
@@ -417,17 +429,27 @@ namespace QA_Feedback.Controllers
 
             var y = _context.Rating.Where(s => s.User == HttpContext.Session.GetString("_Name")).ToList();
             List<int> question_id = y.Select(s => s.Question).ToList();
-            HashSet<int> source= new();
-            foreach(int i in question_id){
+            HashSet<int> source = new();
+            foreach (int i in question_id)
+            {
                 Question q = _context.Question.Where(s => s.Id == i).First();
                 source.Add(q.Source);
             }
-            if(source.Count() == _context.Source.Count()){
+            if (source.Count() == _context.Source.Count())
+            {
                 return RedirectToAction("Done");
 
             }
-            int max = (_context.Source.Count() - 1);
-            int rand = GiveMeANumber(max, source);
+            int max = _context.Source.Count();
+            int rand = 0;
+            try
+            {
+                rand = GiveMeANumber(max, source);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Done");
+            }
             ViewData["next"] = rand;
 
             try
