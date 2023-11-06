@@ -357,6 +357,16 @@ namespace QA_Feedback.Controllers
             return Redirect($"/Questions/ask/{Source}");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AskRandom()
+        {
+            Random r = new Random();
+            int k = (int) r.NextInt64(_context.Source.Count() - 1) + 1;
+            return Redirect($"/Questions/ask/{k}");
+
+        }
+
+
 
         [HttpGet]
         public async Task<IActionResult> Ask(int id)
@@ -452,7 +462,8 @@ namespace QA_Feedback.Controllers
 
             if (d1 == null || d2 == null || d3 == null || Pyramidality_Stars1 == 0 || Pyramidality_Stars2 == 0 || Pyramidality_Stars3 == 0 || Difficulty_Stars1 == 0 || Difficulty_Stars2 == 0 || Difficulty_Stars3 == 0 || Accuracy_Stars1 == 0 || Accuracy_Stars2 == 0 || Accuracy_Stars3 == 0)
             {
-                return Redirect($"/Questions/ask/{next - 1}");
+                var xy = _context.Question.Where(s => s.Id == id1).First().Source;
+                return Redirect($"/Questions/ask/{xy}");
             }
 
             var x = _context.Question.Where(s => s.Id == id1).First();

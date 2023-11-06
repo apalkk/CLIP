@@ -75,6 +75,7 @@ public class HomeController : Controller
         else
         {
             HttpContext.Session.SetString(SessionAuth, "False");
+            return View("~/Views/Home/Landing.cshtml");
         }
 
         return View("~/Views/Home/Go.cshtml");
