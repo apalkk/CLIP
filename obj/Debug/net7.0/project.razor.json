@@ -18675,6 +18675,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/aadipalnitkar/CLIP/Views/Questions/Done.cshtml",
+      "TargetPath": "Views\\Questions\\Done.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/aadipalnitkar/CLIP/Views/Source/Index.cshtml",
       "TargetPath": "Views\\Source\\Index.cshtml",
       "FileKind": "mvc"

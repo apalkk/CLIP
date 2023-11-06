@@ -100,6 +100,16 @@ namespace QA_Feedback.Controllers
 
         }
 
+        private int GiveMeANumber(int max, HashSet<int> hashset)
+        {
+            var exclude = hashset;
+            var range = Enumerable.Range(1, max).Where(i => !exclude.Contains(i));
+
+            var rand = new System.Random();
+            int index = rand.Next(0, max - exclude.Count);
+            return range.ElementAt(index);
+        }
+
         public async Task<IActionResult> UploadFileX()
         {
             if (HttpContext.Session.GetString("_Auth") == "False")
@@ -357,16 +367,29 @@ namespace QA_Feedback.Controllers
             return Redirect($"/Questions/ask/{Source}");
         }
 
-        [HttpGet]
-        public async Task<IActionResult> AskRandom()
-        {
-            Random r = new Random();
-            int k = (int) r.NextInt64(_context.Source.Count() - 1) + 1;
-            return Redirect($"/Questions/ask/{k}");
-
+                [HttpGet]
+        public async Task<IActionResult> Done(){
+            return View();
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> AskRandom()
+        {
+            var x = _context.Rating.Where(s => s.User == HttpContext.Session.GetString("_Name")).ToList();
+            List<int> question_id = x.Select(s => s.Question).ToList();
+            HashSet<int> source= new();
+            foreach(int i in question_id){
+                Question q = _context.Question.Where(s => s.Id == i).First();
+                source.Add(q.Source);
+            }
+            if(source.Count() == _context.Source.Count()){
+                return RedirectToAction("Done");
+            }
+            int max = (_context.Source.Count() - 1);
+            int rand = GiveMeANumber(max, source);
+            return Redirect($"/Questions/ask/{rand}");
+        }
 
         [HttpGet]
         public async Task<IActionResult> Ask(int id)
@@ -392,8 +415,20 @@ namespace QA_Feedback.Controllers
             Random rnd = new Random();
             int random = rnd.Next(4);
 
-            ViewData["source"] = id;
+            var y = _context.Rating.Where(s => s.User == HttpContext.Session.GetString("_Name")).ToList();
+            List<int> question_id = y.Select(s => s.Question).ToList();
+            HashSet<int> source= new();
+            foreach(int i in question_id){
+                Question q = _context.Question.Where(s => s.Id == i).First();
+                source.Add(q.Source);
+            }
+            if(source.Count() == _context.Source.Count()){
+                return RedirectToAction("Done");
 
+            }
+            int max = (_context.Source.Count() - 1);
+            int rand = GiveMeANumber(max, source);
+            ViewData["next"] = rand;
 
             try
             {
@@ -439,8 +474,6 @@ namespace QA_Feedback.Controllers
                     ViewData["id"] = id;
                 }
 
-                Random r = new Random();
-                ViewData["next"] = r.NextInt64(_context.Source.Count() - 1) + 1;
             }
             catch (Exception e)
             {
