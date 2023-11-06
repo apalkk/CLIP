@@ -1,8 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
+
+try{
 builder.Services.AddDbContext<QuizContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("QuizContext") ?? throw new InvalidOperationException("Connection string 'QuizContext' not found.")));
+} catch(Exception e){
+    builder.Services.AddDbContext<QuizContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("QuizContext") ?? throw new InvalidOperationException("Connection string 'QuizContext' not found.")));
+}
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
