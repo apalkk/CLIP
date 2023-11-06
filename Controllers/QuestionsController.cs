@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.FileIO;
 using QA_Feedback.Models;
+using System.Net;
 
 namespace QA_Feedback.Controllers
 {
@@ -101,9 +102,24 @@ namespace QA_Feedback.Controllers
 
         public async Task<IActionResult> UploadFileX()
         {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
             _context.SaveChanges();
             return View();
         }
+
+        public async Task<IActionResult> Dump()
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+            return View();
+        }
+
 
         public async Task<IActionResult> DeleteSuper()
         {
@@ -114,6 +130,7 @@ namespace QA_Feedback.Controllers
             DeleteAll();
             return View("~/Views/Home/Landing.cshtml");
         }
+
 
         public async void DeleteAll()
         {
@@ -129,307 +146,350 @@ namespace QA_Feedback.Controllers
             {
                 _context.Source.Remove(item);
             }
+
+            _context.SaveChanges();
         }
 
-            // GET: Questions
-            public async Task<IActionResult> Index()
+        // GET: Questions
+        public async Task<IActionResult> Index()
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
             {
-                if (HttpContext.Session.GetString("_Auth") == "False")
-                {
-                    return View("~/Views/Home/Landing.cshtml");
-                }
-
-                return _context.Question != null ?
-                          View(await _context.Question.ToListAsync()) :
-                          Problem("Entity set 'QuizContext.Question'  is null.");
+                return View("~/Views/Home/Landing.cshtml");
             }
 
-            // GET: Questions/Details/5
-            public async Task<IActionResult> Details(int? id)
+            return _context.Question != null ?
+                      View(await _context.Question.ToListAsync()) :
+                      Problem("Entity set 'QuizContext.Question'  is null.");
+        }
+
+        // GET: Questions/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
             {
-                if (HttpContext.Session.GetString("_Auth") == "False")
-                {
-                    return View("~/Views/Home/Landing.cshtml");
-                }
-
-                if (id == null || _context.Question == null)
-                {
-                    return NotFound();
-                }
-
-                var question = await _context.Question
-                    .FirstOrDefaultAsync(m => m.Id == id);
-                if (question == null)
-                {
-                    return NotFound();
-                }
-
-                return View(question);
+                return View("~/Views/Home/Landing.cshtml");
             }
 
-            // GET: Questions/Create
-            public IActionResult Create()
+            if (HttpContext.Session.GetString("_Auth") == "False")
             {
-                return View();
+                return View("~/Views/Home/Landing.cshtml");
             }
 
-            public IActionResult GoTo()
+            if (id == null || _context.Question == null)
             {
-                return View();
+                return NotFound();
+            }
+
+            var question = await _context.Question
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (question == null)
+            {
+                return NotFound();
+            }
+
+            return View(question);
+        }
+
+        // GET: Questions/Create
+        public IActionResult Create()
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
             }
 
 
-            // POST: Questions/Create
-            // To protect from overposting attacks, enable the specific properties you want to bind to.
-            // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> Create([Bind("Id,QuestionText,Method,Source")] Question question)
+            return View();
+        }
+
+        public IActionResult GoTo()
+        {
+
+            if (HttpContext.Session.GetString("_Name") == null)
             {
-                if (ModelState.IsValid)
-                {
-                    _context.Add(question);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                return View(question);
+                return this.StatusCode(StatusCodes.Status418ImATeapot, "Username is empty. Please go to the landing page and scroll down to enter your username.");
             }
 
-            // GET: Questions/Edit/5
-            public async Task<IActionResult> Edit(int? id)
+            ViewData["header"] = true;
+            ViewData["count"] = _context.Source.Count();
+            return View();
+        }
+
+
+        // POST: Questions/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,QuestionText,Method,Source")] Question question)
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
             {
-                if (HttpContext.Session.GetString("_Auth") == "False")
-                {
-                    return View("~/Views/Home/Landing.cshtml");
-                }
-
-                if (id == null || _context.Question == null)
-                {
-                    return NotFound();
-                }
-
-                var question = await _context.Question.FindAsync(id);
-                if (question == null)
-                {
-                    return NotFound();
-                }
-                return View(question);
+                return View("~/Views/Home/Landing.cshtml");
             }
 
-            // POST: Questions/Edit/5
-            // To protect from overposting attacks, enable the specific properties you want to bind to.
-            // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> Edit(int id, [Bind("Id,QuestionText,Method,Source")] Question question)
+            if (ModelState.IsValid)
             {
-                if (id != question.Id)
-                {
-                    return NotFound();
-                }
-
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        _context.Update(question);
-                        await _context.SaveChangesAsync();
-                    }
-                    catch (DbUpdateConcurrencyException)
-                    {
-                        if (!QuestionExists(question.Id))
-                        {
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
-                    return RedirectToAction(nameof(Index));
-                }
-                return View(question);
-            }
-
-            // GET: Questions/Delete/5
-            public async Task<IActionResult> Delete(int? id)
-            {
-                if (HttpContext.Session.GetString("_Auth") == "False")
-                {
-                    return View("~/Views/Home/Landing.cshtml");
-                }
-
-                if (id == null || _context.Question == null)
-                {
-                    return NotFound();
-                }
-
-                var question = await _context.Question
-                    .FirstOrDefaultAsync(m => m.Id == id);
-                if (question == null)
-                {
-                    return NotFound();
-                }
-
-                return View(question);
-            }
-
-            // POST: Questions/Delete/5
-            [HttpPost, ActionName("Delete")]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> DeleteConfirmed(int id)
-            {
-                if (_context.Question == null)
-                {
-                    return Problem("Entity set 'QuizContext.Question'  is null.");
-                }
-                var question = await _context.Question.FindAsync(id);
-                if (question != null)
-                {
-                    _context.Question.Remove(question);
-                }
-
+                _context.Add(question);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            return View(question);
+        }
 
-            private bool QuestionExists(int id)
+        // GET: Questions/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
             {
-                return (_context.Question?.Any(e => e.Id == id)).GetValueOrDefault();
+                return View("~/Views/Home/Landing.cshtml");
             }
 
-            [HttpGet]
-            public async Task<IActionResult> Jump(string Source)
+            if (id == null || _context.Question == null)
             {
-                return Redirect($"/Questions/ask/{Source}");
+                return NotFound();
             }
 
-
-            [HttpGet]
-            public async Task<IActionResult> Ask(int id)
+            var question = await _context.Question.FindAsync(id);
+            if (question == null)
             {
-                var x = _context.Question.Where<Question>(q => q.Source == id).ToList();
+                return NotFound();
+            }
+            return View(question);
+        }
+
+        // POST: Questions/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,QuestionText,Method,Source")] Question question)
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
+            if (id != question.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
                 try
                 {
-                    var src = _context.Source.Where<Source>(q => q.Id == id).ToList().First();
-                    ViewData["title"] = src.Title;
-
+                    _context.Update(question);
+                    await _context.SaveChangesAsync();
                 }
-                catch (Exception e)
+                catch (DbUpdateConcurrencyException)
                 {
-                    ViewData["title"] = "Not Found";
-                }
-
-
-                Random rnd = new Random();
-                int random = rnd.Next(4);
-
-                ViewData["source"] = id;
-
-
-                try
-                {
-                    if (random == 2)
+                    if (!QuestionExists(question.Id))
                     {
-                        ViewData["1"] = x[0].QuestionText;
-                        ViewData["2"] = x[1].QuestionText;
-                        ViewData["3"] = x[2].QuestionText;
-                        ViewData["1i"] = x[0].Id;
-                        ViewData["2i"] = x[1].Id;
-                        ViewData["3i"] = x[2].Id;
-                        ViewData["id"] = id;
-                        Random r = new Random();
-                        ViewData["next"] = r.NextInt64(_context.Source.Count());
-                    }
-                    else if (random == 1)
-                    {
-                        ViewData["1"] = x[1].QuestionText;
-                        ViewData["2"] = x[0].QuestionText;
-                        ViewData["3"] = x[2].QuestionText;
-                        ViewData["1i"] = x[1].Id;
-                        ViewData["2i"] = x[0].Id;
-                        ViewData["3i"] = x[2].Id;
-                        ViewData["id"] = id;
-                        Random r = new Random();
-                        ViewData["next"] = r.NextInt64(_context.Source.Count());
-                    }
-                    else if (random == 1)
-                    {
-                        ViewData["1"] = x[1].QuestionText;
-                        ViewData["2"] = x[2].QuestionText;
-                        ViewData["3"] = x[0].QuestionText;
-                        ViewData["1i"] = x[1].Id;
-                        ViewData["2i"] = x[2].Id;
-                        ViewData["3i"] = x[0].Id;
-                        ViewData["id"] = id;
-                        Random r = new Random();
-                        ViewData["next"] = r.NextInt64(_context.Source.Count());
+                        return NotFound();
                     }
                     else
                     {
-                        ViewData["1"] = x[2].QuestionText;
-                        ViewData["2"] = x[0].QuestionText;
-                        ViewData["3"] = x[1].QuestionText;
-                        ViewData["1i"] = x[2].Id;
-                        ViewData["2i"] = x[0].Id;
-                        ViewData["3i"] = x[1].Id;
-                        ViewData["id"] = id;
-                        Random r = new Random();
-                        ViewData["next"] = r.NextInt64(_context.Source.Count());
+                        throw;
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                    return View("~/Views/Home/Incorrect.cshtml");
-                }
-
-                return View();
+                return RedirectToAction(nameof(Index));
             }
-
-            [HttpPost]
-            public async Task<IActionResult> Set(int id1, int id2, int id3, int Pyramidality_Stars1, int Pyramidality_Stars2, int Pyramidality_Stars3, int Difficulty_Stars1, int Difficulty_Stars2, int Difficulty_Stars3, int Accuracy_Stars1, int Accuracy_Stars2, int Accuracy_Stars3, string d1, string d2, string d3, int next)
-            {
-                if (d1 == null || d2 == null || d3 == null || Pyramidality_Stars1 == 0 || Pyramidality_Stars2 == 0 || Pyramidality_Stars3 == 0 || Difficulty_Stars1 == 0 || Difficulty_Stars2 == 0 || Difficulty_Stars3 == 0 || Accuracy_Stars1 == 0 || Accuracy_Stars2 == 0 || Accuracy_Stars3 == 0)
-                {
-                    return Redirect($"/Questions/ask/{next - 1}");
-                }
-
-                var x = _context.Question.Where(s => s.Id == id1).First();
-                var y = _context.Question.Where(s => s.Id == id2).First();
-                var z = _context.Question.Where(s => s.Id == id3).First();
-                Rating r = new();
-                r.Description = d1;
-                r.Question = id1;
-                r.Pyramidality_Stars = Pyramidality_Stars1;
-                r.Difficulty_Stars = Difficulty_Stars1;
-                r.Accuracy_Stars = Accuracy_Stars1;
-                r.User = HttpContext.Session.GetString("_Name") ?? "";
-                _context.Rating.Add(r);
-                await _context.SaveChangesAsync();
-
-                Rating r2 = new();
-                r2.Description = d2;
-                r2.Question = id2;
-                r2.Pyramidality_Stars = Pyramidality_Stars2;
-                r2.Difficulty_Stars = Difficulty_Stars2;
-                r2.Accuracy_Stars = Accuracy_Stars2;
-                r2.User = HttpContext.Session.GetString("_Name") ?? "";
-                _context.Rating.Add(r2);
-                await _context.SaveChangesAsync();
-
-                Rating r3 = new();
-                r3.Description = d3;
-                r3.Question = id3;
-                r3.Pyramidality_Stars = Pyramidality_Stars3;
-                r3.Difficulty_Stars = Difficulty_Stars3;
-                r3.Accuracy_Stars = Accuracy_Stars3;
-                r3.User = HttpContext.Session.GetString("_Name") ?? "";
-                _context.Rating.Add(r3);
-                await _context.SaveChangesAsync();
-
-                return Redirect($"/Questions/ask/{next}");
-            }
-
+            return View(question);
         }
+
+        // GET: Questions/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (HttpContext.Session.GetString("_Auth") == "False")
+            {
+                return View("~/Views/Home/Landing.cshtml");
+            }
+
+            if (id == null || _context.Question == null)
+            {
+                return NotFound();
+            }
+
+            var question = await _context.Question
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (question == null)
+            {
+                return NotFound();
+            }
+
+            return View(question);
+        }
+
+        // POST: Questions/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.Question == null)
+            {
+                return Problem("Entity set 'QuizContext.Question'  is null.");
+            }
+            var question = await _context.Question.FindAsync(id);
+            if (question != null)
+            {
+                _context.Question.Remove(question);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool QuestionExists(int id)
+        {
+            return (_context.Question?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        [HttpGet]
+        public ActionResult Jump(string Source)
+        {
+            if (HttpContext.Session.GetString("_Name") == null)
+            {
+                return this.StatusCode(StatusCodes.Status418ImATeapot, "Username is empty. Please go to the landing page and scroll down to enter your username.");
+            }
+
+            return Redirect($"/Questions/ask/{Source}");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Ask(int id)
+        {
+            if (HttpContext.Session.GetString("_Name") == null)
+            {
+                return this.StatusCode(StatusCodes.Status418ImATeapot, "Username is empty. Please go to the landing page and scroll down to enter your username.");
+            }
+
+            var x = _context.Question.Where<Question>(q => q.Source == id).ToList();
+            try
+            {
+                var src = _context.Source.Where<Source>(q => q.Id == id).ToList().First();
+                ViewData["title"] = src.Title;
+
+            }
+            catch (Exception e)
+            {
+                ViewData["title"] = "Not Found";
+            }
+
+
+            Random rnd = new Random();
+            int random = rnd.Next(4);
+
+            ViewData["source"] = id;
+
+
+            try
+            {
+
+                if (random == 2)
+                {
+                    ViewData["1"] = x[0].QuestionText;
+                    ViewData["2"] = x[1].QuestionText;
+                    ViewData["3"] = x[2].QuestionText;
+                    ViewData["1i"] = x[0].Id;
+                    ViewData["2i"] = x[1].Id;
+                    ViewData["3i"] = x[2].Id;
+                    ViewData["id"] = id;
+                }
+                else if (random == 1)
+                {
+                    ViewData["1"] = x[1].QuestionText;
+                    ViewData["2"] = x[0].QuestionText;
+                    ViewData["3"] = x[2].QuestionText;
+                    ViewData["1i"] = x[1].Id;
+                    ViewData["2i"] = x[0].Id;
+                    ViewData["3i"] = x[2].Id;
+                    ViewData["id"] = id;
+                }
+                else if (random == 1)
+                {
+                    ViewData["1"] = x[1].QuestionText;
+                    ViewData["2"] = x[2].QuestionText;
+                    ViewData["3"] = x[0].QuestionText;
+                    ViewData["1i"] = x[1].Id;
+                    ViewData["2i"] = x[2].Id;
+                    ViewData["3i"] = x[0].Id;
+                    ViewData["id"] = id;
+                }
+                else
+                {
+                    ViewData["1"] = x[2].QuestionText;
+                    ViewData["2"] = x[0].QuestionText;
+                    ViewData["3"] = x[1].QuestionText;
+                    ViewData["1i"] = x[2].Id;
+                    ViewData["2i"] = x[0].Id;
+                    ViewData["3i"] = x[1].Id;
+                    ViewData["id"] = id;
+                }
+
+                Random r = new Random();
+                ViewData["next"] = r.NextInt64(_context.Source.Count() - 1) + 1;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                ViewData["header"] = false;
+                return View("~/Views/Home/Incorrect.cshtml");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Set(int id1, int id2, int id3, int Pyramidality_Stars1, int Pyramidality_Stars2, int Pyramidality_Stars3, int Difficulty_Stars1, int Difficulty_Stars2, int Difficulty_Stars3, int Accuracy_Stars1, int Accuracy_Stars2, int Accuracy_Stars3, string d1, string d2, string d3, int next)
+        {
+            d1 = d1 == null ? "" : d1;
+            d2 = d2 == null ? "" : d2;
+            d3 = d3 == null ? "" : d3;
+
+
+            if (d1 == null || d2 == null || d3 == null || Pyramidality_Stars1 == 0 || Pyramidality_Stars2 == 0 || Pyramidality_Stars3 == 0 || Difficulty_Stars1 == 0 || Difficulty_Stars2 == 0 || Difficulty_Stars3 == 0 || Accuracy_Stars1 == 0 || Accuracy_Stars2 == 0 || Accuracy_Stars3 == 0)
+            {
+                return Redirect($"/Questions/ask/{next - 1}");
+            }
+
+            var x = _context.Question.Where(s => s.Id == id1).First();
+            var y = _context.Question.Where(s => s.Id == id2).First();
+            var z = _context.Question.Where(s => s.Id == id3).First();
+            Rating r = new();
+            r.Description = d1;
+            r.Question = id1;
+            r.Pyramidality_Stars = Pyramidality_Stars1;
+            r.Difficulty_Stars = Difficulty_Stars1;
+            r.Accuracy_Stars = Accuracy_Stars1;
+            r.User = HttpContext.Session.GetString("_Name") ?? "";
+            _context.Rating.Add(r);
+            await _context.SaveChangesAsync();
+
+            Rating r2 = new();
+            r2.Description = d2;
+            r2.Question = id2;
+            r2.Pyramidality_Stars = Pyramidality_Stars2;
+            r2.Difficulty_Stars = Difficulty_Stars2;
+            r2.Accuracy_Stars = Accuracy_Stars2;
+            r2.User = HttpContext.Session.GetString("_Name") ?? "";
+            _context.Rating.Add(r2);
+            await _context.SaveChangesAsync();
+
+            Rating r3 = new();
+            r3.Description = d3;
+            r3.Question = id3;
+            r3.Pyramidality_Stars = Pyramidality_Stars3;
+            r3.Difficulty_Stars = Difficulty_Stars3;
+            r3.Accuracy_Stars = Accuracy_Stars3;
+            r3.User = HttpContext.Session.GetString("_Name") ?? "";
+            _context.Rating.Add(r3);
+            await _context.SaveChangesAsync();
+
+            return Redirect($"/Questions/ask/{next}");
+        }
+
     }
+}

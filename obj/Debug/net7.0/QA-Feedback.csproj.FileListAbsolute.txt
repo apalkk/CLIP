@@ -1122,3 +1122,10 @@
 /Users/aadipalnitkar/Projects/CLIP/obj/Debug/net7.0/QA-Feedback.pdb
 /Users/aadipalnitkar/Projects/CLIP/obj/Debug/net7.0/QA-Feedback.genruntimeconfig.cache
 /Users/aadipalnitkar/Projects/CLIP/obj/Debug/net7.0/ref/QA-Feedback.dll
+/Users/aadipalnitkar/CLIP/bin/Debug/net7.0/System.Web.Mvc.dll
+/Users/aadipalnitkar/CLIP/bin/Debug/net7.0/System.Web.Razor.dll
+/Users/aadipalnitkar/CLIP/bin/Debug/net7.0/System.Web.Helpers.dll
+/Users/aadipalnitkar/CLIP/bin/Debug/net7.0/System.Web.WebPages.Deployment.dll
+/Users/aadipalnitkar/CLIP/bin/Debug/net7.0/System.Web.WebPages.Razor.dll
+/Users/aadipalnitkar/CLIP/bin/Debug/net7.0/System.Web.WebPages.dll
+/Users/aadipalnitkar/CLIP/bin/Debug/net7.0/Microsoft.Web.Infrastructure.dll

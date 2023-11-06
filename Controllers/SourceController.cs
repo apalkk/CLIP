@@ -31,6 +31,14 @@ namespace QA_Feedback.Controllers
                           Problem("Entity set 'QuizContext.Source'  is null.");
         }
 
+        public async Task<IActionResult> ErrorPage(string s)
+        {
+            ViewData["error"] = s;
+            return View("/Views/Home/Error.cshtml");
+        }
+
+
+
         // GET: Source/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -18,6 +18,13 @@ namespace QA_Feedback.Controllers
             _context = context;
         }
 
+                public async Task<IActionResult> ErrorPage(string s)
+        {
+            ViewData["error"] = s;
+            return View("/Views/Home/Error.cshtml");
+        }
+
+
         // GET: Rating
         public async Task<IActionResult> Index()
         {
