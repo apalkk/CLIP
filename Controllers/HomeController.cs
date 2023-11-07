@@ -51,7 +51,6 @@ public class HomeController : Controller
     {
         ViewData["header"] = null;
         HttpContext.Session.SetString(SessionName, name);
-        Console.WriteLine("s");
         return View("~/Views/Home/Landing.cshtml");
     }
 

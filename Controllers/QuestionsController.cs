@@ -499,7 +499,6 @@ namespace QA_Feedback.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
                 ViewData["header"] = false;
                 return View("~/Views/Home/Incorrect.cshtml");
             }
