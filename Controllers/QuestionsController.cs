@@ -25,7 +25,6 @@ namespace QA_Feedback.Controllers
             _context = context;
         }
 
-
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
@@ -107,7 +106,8 @@ namespace QA_Feedback.Controllers
 
             var rand = new System.Random();
             int index = rand.Next(0, max - exclude.Count);
-            return range.ElementAt(index);
+            int u = range.ElementAt(index);
+            return u;
         }
 
         public async Task<IActionResult> UploadFileX()
@@ -382,8 +382,11 @@ namespace QA_Feedback.Controllers
             HashSet<int> source = new();
             foreach (int i in question_id)
             {
-                Question q = _context.Question.Where(s => s.Id == i).First();
-                source.Add(q.Source);
+                var q = _context.Question.Where(s => s.Id == i).ToList();
+                var lo = q.Select(s => s.Source);
+                foreach(var v in lo){
+                    source.Add(v);
+                }
             }
             if (source.Count() == _context.Source.Count())
             {
@@ -499,6 +502,7 @@ namespace QA_Feedback.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 ViewData["header"] = false;
                 return View("~/Views/Home/Incorrect.cshtml");
             }
@@ -553,7 +557,7 @@ namespace QA_Feedback.Controllers
             _context.Rating.Add(r3);
             await _context.SaveChangesAsync();
 
-            return Redirect($"/Questions/ask/{next}");
+            return RedirectToAction("AskRandom");
         }
 
     }
