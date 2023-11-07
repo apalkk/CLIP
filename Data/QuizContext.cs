@@ -7,6 +7,7 @@ using QA_Feedback.Models;
 
     public class QuizContext : DbContext
     {
+        public int Curr { get; set; } = 0;
         public QuizContext (DbContextOptions<QuizContext> options)
             : base(options)
         {

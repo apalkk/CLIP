@@ -18,7 +18,7 @@ namespace QA_Feedback.Controllers
 {
     public class QuestionsController : Controller
     {
-        private readonly QuizContext _context;
+        private QuizContext _context;
 
         public QuestionsController(QuizContext context)
         {
@@ -388,6 +388,9 @@ namespace QA_Feedback.Controllers
                     source.Add(v);
                 }
             }
+            if (_context.Curr != 0 && source.Count() < _context.Source.Count()-1) {
+                source.Add(_context.Curr);
+            }
             if (source.Count() == _context.Source.Count())
             {
                 return RedirectToAction("Done");
@@ -402,7 +405,7 @@ namespace QA_Feedback.Controllers
             {
                 return RedirectToAction("Done");
             }
-
+            _context.Curr = rand;
             return Redirect($"/Questions/ask/{rand}");
         }
 
@@ -428,7 +431,6 @@ namespace QA_Feedback.Controllers
 
 
             Random rnd = new Random();
-            int random = rnd.Next(4);
 
             var y = _context.Rating.Where(s => s.User == HttpContext.Session.GetString("_Name")).ToList();
             List<int> question_id = y.Select(s => s.Question).ToList();
@@ -455,50 +457,21 @@ namespace QA_Feedback.Controllers
             }
             ViewData["next"] = rand;
 
+            var indices = new[] { 0, 1, 2 };
             try
             {
-
-                if (random == 2)
+                for (int i = 0; i < indices.Length; i++)
                 {
-                    ViewData["1"] = x[0].QuestionText;
-                    ViewData["2"] = x[1].QuestionText;
-                    ViewData["3"] = x[2].QuestionText;
-                    ViewData["1i"] = x[0].Id;
-                    ViewData["2i"] = x[1].Id;
-                    ViewData["3i"] = x[2].Id;
-                    ViewData["id"] = id;
+                    int swapIndex = rnd.Next(i, indices.Length);
+                    (indices[i], indices[swapIndex]) = (indices[swapIndex], indices[i]);
                 }
-                else if (random == 1)
-                {
-                    ViewData["1"] = x[1].QuestionText;
-                    ViewData["2"] = x[0].QuestionText;
-                    ViewData["3"] = x[2].QuestionText;
-                    ViewData["1i"] = x[1].Id;
-                    ViewData["2i"] = x[0].Id;
-                    ViewData["3i"] = x[2].Id;
-                    ViewData["id"] = id;
-                }
-                else if (random == 1)
-                {
-                    ViewData["1"] = x[1].QuestionText;
-                    ViewData["2"] = x[2].QuestionText;
-                    ViewData["3"] = x[0].QuestionText;
-                    ViewData["1i"] = x[1].Id;
-                    ViewData["2i"] = x[2].Id;
-                    ViewData["3i"] = x[0].Id;
-                    ViewData["id"] = id;
-                }
-                else
-                {
-                    ViewData["1"] = x[2].QuestionText;
-                    ViewData["2"] = x[0].QuestionText;
-                    ViewData["3"] = x[1].QuestionText;
-                    ViewData["1i"] = x[2].Id;
-                    ViewData["2i"] = x[0].Id;
-                    ViewData["3i"] = x[1].Id;
-                    ViewData["id"] = id;
-                }
-
+                ViewData["1"] = x[indices[0]].QuestionText;
+                ViewData["2"] = x[indices[1]].QuestionText;
+                ViewData["3"] = x[indices[2]].QuestionText;
+                ViewData["1i"] = x[indices[0]].Id;
+                ViewData["2i"] = x[indices[1]].Id;
+                ViewData["3i"] = x[indices[2]].Id;
+                ViewData["id"] = id;
             }
             catch (Exception e)
             {
